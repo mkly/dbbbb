@@ -12,7 +12,7 @@ class DbbbbPackage extends Package {
 	}
 
 	public function getPackageDescription() {
-		return t('Check that sql. To enabled set DBBBB_DEBUG_ENABLED to true in /config/site.php');
+		return t('Check that sql. To enable set DBBBB_DEBUG_ENABLED to true in /config/site.php');
 	}
 	
 	public function install() {
@@ -29,18 +29,21 @@ CREATE TABLE IF NOT EXISTS adodb_logsql (
 );
 SQL;
 
+		$db = Loader::db();
 		$db->Execute($sql);
 	}
 
 	public function uninstall() {
 		$pkg = parent::uninstall();
 
+		$db = Loader::db();
 		$sql = 'DROP TABLE IF EXISTS adodb_logsql';
+		$db->Execute($sql);
 	}
 
 	public function on_start() {
 		if(
-			!defined(DBBBB_DEBUG_ENABLED)
+			!defined('DBBBB_DEBUG_ENABLED')
 			||
 			!DBBBB_DEBUG_ENABLED
 		) {
