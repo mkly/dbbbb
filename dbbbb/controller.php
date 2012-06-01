@@ -51,7 +51,7 @@ SQL;
 		}
 
 		Database::setLogging(true);
-		Events::extend('on_render_complete', 'DbbbbPackage', 'shutdown', __FILE__);
+		Events::extend('on_render_complete', $this, 'shutdown', __FILE__);
 	}
 
 	public static function shutdown() {
