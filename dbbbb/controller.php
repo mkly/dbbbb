@@ -4,8 +4,8 @@ defined('C5_EXECUTE') or die('Access Denied.');
 class DbbbbPackage extends Package {
 
 	protected $pkgHandle = "dbbbb";
-	protected $appVersionRequired = "5.5";
-	protected $pkgVersion = "0.1";
+	protected $appVersionRequired = "5.6";
+	protected $pkgVersion = "0.1.1";
 
 	public function getPackageName() {
 		return t('Dbbbb');
